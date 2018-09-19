@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
+import firebaseApp  from './firebase';
 
 class App extends Component {
   render() {
