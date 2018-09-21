@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import { firebaseApp } from '../firebase';
 import logo  from '../assets/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import history from '../history';
 
 class SignIn extends Component {
   constructor(props) {
@@ -18,12 +19,24 @@ class SignIn extends Component {
     console.log('this.state', this.state);
     const { email, password } = this.state;
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => { this.setState({ error }) })
+    .then(user => {
+      window.location ='/';
+    })
+
+    .catch(error => { this.setState({ error }) });
+
+  }
+
+  signInFacebook() {
+
+  }
+
+  signInGoogle() {
+
   }
 
   render() {
     return (
-
       <div className="row col s12 ">
       <div className='row col s12'>
       <img className= 'col s12 taco-logo' src = { logo }/>
@@ -54,4 +67,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
