@@ -4,18 +4,33 @@ import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import firebaseApp  from 'firebase';
 import { withRouter } from 'react-router-dom';
-import history from './history';
 
 class App extends Component {
-
   signOut() {
     firebaseApp.auth().signOut();
-      window.location ='/signin';
+    this.props.history.replace('/signin');
 
   }
 
+  componentWillMount() {
+    
+  firebaseApp.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('Usuario está en sesion');
+      this.props.history.push('/');
+
+    } else {
+
+      console.log('No hay usuario iniciado de sesion');
+        this.props.history.replace('/signin');
+
+    }
+});
+}
+
   render() {
     return (
+
       <div className="container">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

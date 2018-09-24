@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { firebaseApp } from '../firebase';
 import logo  from '../assets/logo.png';
 import { Link, withRouter } from 'react-router-dom';
-import history from '../history';
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -15,12 +15,28 @@ class SignIn extends Component {
       }
     }
   }
+
+  componentWillMount() {
+
+  firebaseApp.auth().onAuthStateChanged(user => {
+    if (user) {
+      console.log('Usuario está en sesion');
+      this.props.history.push('/');
+
+    } else {
+
+      console.log('No hay usuario iniciado de sesion');
+        this.props.history.replace('/signin');
+
+    }
+});
+}
   signIn() {
     console.log('this.state', this.state);
     const { email, password } = this.state;
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then(user => {
-      window.location ='/';
+        this.props.history.push('/');
     })
 
     .catch(error => { this.setState({ error }) });
