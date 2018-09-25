@@ -43,7 +43,7 @@ class SignIn extends Component {
 
   }
 
-  signInFacebook() {
+signInFacebook() {
 
   }
 
@@ -71,8 +71,8 @@ class SignIn extends Component {
             </div>
           </div>
           <div className="row">
-          <a className="col s6 offset-s3 waves-effect waves-light btn teal orange lighten-1 " onClick = {() => this.signIn()} >Entrar <i className="fas fa-arrow-alt-circle-right"></i></a>
-          <a className="col s6 offset-s3 waves-effect waves-light btn light-blue darken-4 btn-mar"  ><i className="fab fa-facebook-f"></i>acebook</a>
+          <a className="col s6 offset-s3 waves-effect waves-light btn teal orange lighten-1 " onClick = { () => this.signIn() } >Entrar <i className="fas fa-arrow-alt-circle-right"></i></a>
+          <a className="col s6 offset-s3 waves-effect waves-light btn light-blue darken-4 btn-mar" ><i className="fab fa-facebook-f"></i>acebook</a>
           <a className="col s6 offset-s3 waves-effect waves-light btn red darken-4 btn-mar"  ><i className="fab fa-google"></i>oogle</a>
           <div className = 'row col s6 offset-s3 '><Link to = { '/signup' } >¿Aún no te has registrado?</Link></div>
           </div>

@@ -11,16 +11,12 @@ class App extends Component {
     this.props.history.replace('/signin');
 
   }
-
   componentWillMount() {
-    
   firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
       console.log('Usuario está en sesion');
       this.props.history.push('/');
-
     } else {
-
       console.log('No hay usuario iniciado de sesion');
         this.props.history.replace('/signin');
 
@@ -30,7 +26,6 @@ class App extends Component {
 
   render() {
     return (
-
       <div className="container">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
