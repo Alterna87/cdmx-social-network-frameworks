@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { firebaseApp } from '../firebase';
+import firebase from 'firebase';
 import logo  from '../assets/logo.png';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -48,6 +49,11 @@ signInFacebook() {
   }
 
   signInGoogle() {
+
+  const provider = new firebase.auth.GoogleAuthProvider();
+   firebase.auth().signInWithPopup(provider)
+   .then(result => this.props.history.push('/') )
+   .catch(error => { this.setState({ error }) } );
 
   }
 
