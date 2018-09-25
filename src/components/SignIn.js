@@ -44,7 +44,11 @@ class SignIn extends Component {
 
   }
 
-signInFacebook() {
+  signInFacebook() {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+  .then(result => this.props.history.push('/') )
+  .catch(error => { this.setState({ error }) } );
 
   }
 
@@ -78,7 +82,7 @@ signInFacebook() {
           </div>
           <div className="row">
           <a className="col s6 offset-s3 waves-effect waves-light btn teal orange lighten-1 " onClick = { () => this.signIn() } >Entrar <i className="fas fa-arrow-alt-circle-right"></i></a>
-          <a className="col s6 offset-s3 waves-effect waves-light btn light-blue darken-4 btn-mar"  ><i className="fab fa-facebook-f"></i>acebook</a>
+          <a className="col s6 offset-s3 waves-effect waves-light btn light-blue darken-4 btn-mar" onClick = { () => this.signInFacebook() } ><i className="fab fa-facebook-f"></i>acebook</a>
           <a className="col s6 offset-s3 waves-effect waves-light btn red darken-4 btn-mar" onClick = { () => this.signInGoogle() } ><i className="fab fa-google"></i>oogle</a>
           <div className = 'row col s6 offset-s3 '><Link to = { '/signup' } >¿Aún no te has registrado?</Link></div>
           </div>
