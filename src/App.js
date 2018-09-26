@@ -1,16 +1,15 @@
 import React, { Component,  } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import firebaseApp  from 'firebase';
 import { withRouter } from 'react-router-dom';
 
-class App extends Component {
-  signOut() {
-    firebaseApp.auth().signOut();
-    this.props.history.replace('/signin');
+// Components
+import Menu from './components/Menu'
 
-  }
+class App extends Component {
+
+
   componentWillMount() {
   firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
@@ -27,11 +26,10 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Mexican Food Lovers</h1>
+        <header className="">
+          <h1 className="App-title">Mexican Food Lovers</h1>
         </header>
-        <a className="col s6 offset-s3 waves-effect waves-light btn teal orange lighten-1" onClick = {() => this.signOut()}>Salir <i className = "fas fa-sign-out-alt"></i></a>
+        <Menu />
       </div>
     );
   }
