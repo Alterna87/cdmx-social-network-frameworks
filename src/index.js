@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route } from 'react-router-dom';
-import history from './history';
+
 import { firebaseApp } from './firebase';
 import SignUp from './components/SingInUp';
 import SignIn from './components/SignIn';
@@ -12,12 +12,10 @@ import SignIn from './components/SignIn';
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('Usuario está en sesion');
-    history.push('/');
+
 
   } else {
     console.log('No hay usuario iniciado de sesion');
-      history.replace('/signin');
-
   }
 });
 

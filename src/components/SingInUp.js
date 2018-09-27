@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import logo  from '../assets/logo.png';
 
+import { Link, withRouter } from 'react-router-dom';
+
 class SingInUp extends Component {
   constructor(props) {
     super(props);
@@ -52,4 +54,4 @@ class SingInUp extends Component {
   }
 }
 
-export default SingInUp;
+export default withRouter(SingInUp);
