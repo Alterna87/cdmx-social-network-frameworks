@@ -16,8 +16,6 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
   } else {
     console.log('No hay usuario iniciado de sesion');
-
-
   }
 });
 

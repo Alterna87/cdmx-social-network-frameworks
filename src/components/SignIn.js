@@ -17,7 +17,7 @@ class SignIn extends Component {
     }
   }
 
-  componentWillMount() {
+componentDidMount() {
   firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
       console.log('Usuario está en sesion');
