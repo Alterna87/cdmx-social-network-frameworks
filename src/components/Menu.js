@@ -9,7 +9,6 @@ import '../App.css';
 import './Menu.css';
 
 
-
 class Menu extends Component {
   constructor(props) {
     super(props);

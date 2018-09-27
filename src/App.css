@@ -46,10 +46,12 @@
 }
 
 .taco-img {
-  width: 53px;
+width: 53px;
 height: 47px;
 }
 
-.bck-prob {
-  background-color: red;
-}
+.textitle-color {
+  color: #f34b42;
+      padding: 13px;
+
+ }

@@ -30,11 +30,12 @@ constructor() {
     return (
       <div className="container">
         <header >
-
-        </header>
         <div className = "row" >
-        <div className = 'col s4 offset-s6 bck-prob'>
-        <p>Mexican Food Lovers</p></div></div>
+        <div className = ' '>
+        <img className= 'col s3 taco-img' src= { taco }/><h6 className= 'textitle-color'>Mexican Food Lovers</h6></div></div>
+        </header>
+
+
           <Menu />
 
       </div>
