@@ -1,8 +1,9 @@
 {
   "name": "redsocial",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "http://Alterna87.github.io/cdmx-social-network-frameworks/",
+  "private": true,
+    "homepage": "http://Alterna87.github.io/react-gh-pages/",
+
   "dependencies": {
     "firebase": "^5.5.0",
     "materialize-css": "^1.0.0",
