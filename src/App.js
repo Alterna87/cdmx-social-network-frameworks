@@ -29,7 +29,7 @@ constructor() {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <header >
         <div className = 'bcg-pink' >
           <Menu/>
