@@ -57,8 +57,10 @@ signOut() {
 
     return (
 
-  <div className = 'menu-margin'>
+  <div className = ''>
+
   <a href="#" data-target="slide-out" className = "sidenav-trigger"><i className="material-icons"></i></a>
+
   <ul id="slide-out" className="sidenav">
       <li><div className ="user-view">
         <div className ="background">
@@ -67,15 +69,17 @@ signOut() {
         { this.userInfoAvatar () }
         { this.userInfoName() }
         </div></li>
-      <li><a href="#!">Recetas</a></li>
-      <li><a href="#!">Lugares</a></li>
+      <li><a href="#!"><i className="fas fa-utensils"></i> Recetas</a></li>
+      <li><a href="#!"><i className="fas fa-map-marker-alt"></i> Lugares</a></li>
       <li><div className ="divider"></div></li>
       <li><a className ="subheader">Perfil</a></li>
       <li><a className="waves-effect waves-light btn teal orange lighten-1" onClick = {() => this.signOut()}>Salir <i className = "fas fa-sign-out-alt"></i></a>
       </li>
     </ul>
-    <a href="#" data-target="slide-out" className ="sidenav-trigger"><i className="fas fa-bars icon-size "></i></a>
-
+    <div className='row'>
+    <a href="#" data-target="slide-out" className =" col s3 sidenav-trigger"><i className="fas fa-bars textitle-color size-menu "></i></a>
+    <h6 className= 'col s7 textitle-color'>Mexican Food Lovers</h6>
+    </div>
       </div>
       );
   }

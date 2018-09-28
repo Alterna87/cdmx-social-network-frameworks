@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom';
 import taco from './assets/taco.png';
 
 // Components
-import Menu from './components/Menu'
+import Menu from './components/Menu';
+import FormRecipe from './components/FormRecipe';
 
 
 class App extends Component {
@@ -30,13 +31,11 @@ constructor() {
     return (
       <div className="container">
         <header >
-        <div className = "row" >
-        <div className = ' '>
-        <img className= 'col s3 taco-img' src= { taco }/><h6 className= 'textitle-color'>Mexican Food Lovers</h6></div></div>
+        <div className = 'bcg-pink' >
+          <Menu/>
+          </div>
         </header>
-
-
-          <Menu />
+        <FormRecipe />
 
       </div>
     );

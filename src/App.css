@@ -51,7 +51,15 @@ height: 47px;
 }
 
 .textitle-color {
-  color: #f34b42;
-      padding: 13px;
+  color: white;
+
+ }
+
+ .size-menu {
+   font-size: 2em;
+ }
+
+ .bcg-pink {
+   background-color:#f34b42;
 
  }
