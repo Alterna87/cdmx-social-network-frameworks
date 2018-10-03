@@ -9,6 +9,7 @@ import { firebaseApp } from './firebase';
 import SignUp from './components/SingInUp';
 import SignIn from './components/SignIn';
 
+
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('Usuario está en sesion');
@@ -19,7 +20,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
   }
 });
 
-ReactDOM.render(<BrowserRouter >
+ReactDOM.render(<BrowserRouter basename={ process.env.PUBLIC_URL } >
     <div>
             <Route exact path = '/' component = { App } />
             <Route exact path = '/signup' component = { SignUp } />
