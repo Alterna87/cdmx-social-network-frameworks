@@ -17,7 +17,7 @@ const store = createStore(reducers);
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('Usuario está en sesion');
-    const {email } = user;
+    const { email } = user;
     store.dispatch(logUser(email));
   } else {
     console.log('No hay usuario iniciado de sesion');

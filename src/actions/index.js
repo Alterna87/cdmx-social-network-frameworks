@@ -1,4 +1,4 @@
-import { SIGNED_IN } from '../constants';
+import { SIGNED_IN, SET_RECIPE } from '../constants';
 
 export function logUser (email) {
   const action = {
@@ -7,4 +7,12 @@ export function logUser (email) {
   }
 
   return action;
+}
+
+export function setRecipe (recipes) {
+  const action = {
+    type: SET_RECIPE,
+    recipes
+  }
+  return recipes;
 }

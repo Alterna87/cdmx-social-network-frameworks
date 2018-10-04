@@ -8,6 +8,7 @@ import taco from './assets/taco.png';
 // Components
 import Menu from './components/Menu';
 import FormRecipe from './components/FormRecipe';
+import ListRecipe from './components/ListRecipe';
 
 class App extends Component {
 constructor() {
@@ -34,7 +35,7 @@ constructor() {
           </div>
         </header>
         <FormRecipe />
-
+        <ListRecipe/>
       </div>
     );
   }
