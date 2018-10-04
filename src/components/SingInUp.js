@@ -20,7 +20,7 @@ class SingInUp extends Component {
     const { email, password } = this.state;
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
     .then(user => {
-      window.location ='/';
+      this.props.history.push('/');
     })
     .catch(error => { this.setState({ error }) })
   }
