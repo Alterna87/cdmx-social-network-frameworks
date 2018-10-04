@@ -2,12 +2,11 @@ import React, { Component} from 'react';
 import { firebaseApp } from '../firebase';
 import firebase from 'firebase';
 import { Link, withRouter } from 'react-router-dom';
-
+import {connect} from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
 import backNav from '../assets/background-zarape.jpg';
 import '../App.css';
 import './Menu.css';
-
 
 class Menu extends Component {
   constructor(props) {
@@ -24,15 +23,17 @@ class Menu extends Component {
             inDuration: 250
         });
 
+        firebaseApp.auth().onAuthStateChanged(user => {
+          user
+          ? this.setState({ user })
+          : this.setState ({ user: null });
+
+        });
+
     }
 
     componentWillMount() {
-      firebaseApp.auth().onAuthStateChanged(user => {
-        user
-        ? this.setState({ user })
-        : this.setState ({ user: null });
 
-      });
     }
 
 userInfoAvatar () {
@@ -84,5 +85,10 @@ signOut() {
       );
   }
 }
+function mapStateToProps  (state) {
+ console.log('state', state);
+ return {  }
+}
+//export default withRouter (Menu);
 
-export default withRouter (Menu);
+export default withRouter(connect(mapStateToProps)(Menu))

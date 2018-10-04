@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import firebaseApp  from 'firebase';
 import { withRouter } from 'react-router-dom';
-
+import  {connect}  from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { recipeRef } from '../firebase';
 
@@ -11,28 +11,37 @@ class FormRecipe extends Component {
       super(props);
       this.state = {
         title: '',
-        ingredients : '',
-        steps: ''
+        ingredients: '',
+        steps: '',
+        name:'',
+        type: 'Receta',
+        like: 0
       }
     }
-  componentWillMount() {
-    firebaseApp.auth().onAuthStateChanged(user => {
-      user
-      ? this.setState({ user })
-      : this.setState ({ user: null });
-    });
+    componentDidMount() {
+       firebaseApp.auth().onAuthStateChanged(user => {
+         user
+         ? this.setState({ user })
+         : this.setState ({ user: null });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      let elems = document.querySelectorAll('.fixed-action-btn');
-      let instances = M.FloatingActionButton.init(elems, {
-        direction: 'left'
-      });
-    });
-  }
+       });
+
+    }
+
+      componentWillMount() {
+        document.addEventListener('DOMContentLoaded', function() {
+           var elems = document.querySelectorAll('.fixed-action-btn');
+           var instances = M.FloatingActionButton.init(elems, {
+             direction: 'left'
+           });
+         });
+      }
 
   addRecipe () {
-    console.log('this.state:', this.state);
-    recipeRef.push();
+  console.log('this.state', this.state);
+  const {title, ingredients, steps, type, like } = this.state;
+  const {name} = this.props;
+  recipeRef.push({name, title, ingredients, steps, type, like })
   }
 render() {
   return (
@@ -71,4 +80,10 @@ render() {
   }
 }
 
+ function mapStateToProps  (state) {
+  const { email } = state;
+  return { email }
+}
+
+//export default withRouter(connect(mapStateToProps, null)(FormRecipe));
 export default withRouter (FormRecipe);

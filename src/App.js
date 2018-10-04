@@ -9,14 +9,6 @@ import taco from './assets/taco.png';
 import Menu from './components/Menu';
 import FormRecipe from './components/FormRecipe';
 
-
-
-
-
-eefwrf
-
-
-
 class App extends Component {
 constructor() {
   super();
