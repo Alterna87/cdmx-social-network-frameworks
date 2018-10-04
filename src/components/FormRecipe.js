@@ -15,7 +15,6 @@ class FormRecipe extends Component {
         steps: ''
       }
     }
-
   componentWillMount() {
     firebaseApp.auth().onAuthStateChanged(user => {
       user

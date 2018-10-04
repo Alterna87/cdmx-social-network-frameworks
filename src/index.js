@@ -9,6 +9,7 @@ import { firebaseApp } from './firebase';
 import SignUp from './components/SingInUp';
 import SignIn from './components/SignIn';
 
+
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     console.log('Usuario está en sesion');
