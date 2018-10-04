@@ -13,7 +13,7 @@ class FormRecipe extends Component {
         title: '',
         ingredients: '',
         steps: '',
-        name:'',
+        email:'',
         type: 'Receta',
         like: 0
       }
@@ -38,10 +38,10 @@ class FormRecipe extends Component {
       }
 
   addRecipe () {
-  console.log('this.state', this.state);
+  console.log('this', this);
   const {title, ingredients, steps, type, like } = this.state;
-  const {name} = this.props;
-  recipeRef.push({name, title, ingredients, steps, type, like })
+  const {email} = this.props;
+  recipeRef.push({email, title, ingredients, steps, type, like })
   }
 render() {
   return (
@@ -85,5 +85,5 @@ render() {
   return { email }
 }
 
-//export default withRouter(connect(mapStateToProps, null)(FormRecipe));
-export default withRouter (FormRecipe);
+export default withRouter(connect(mapStateToProps)(FormRecipe));
+//export default withRouter (FormRecipe);
