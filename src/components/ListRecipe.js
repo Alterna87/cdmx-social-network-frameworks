@@ -1,25 +1,45 @@
 import React, { Component,  } from 'react';
-  import { recipeRef } from '../firebase';
+import { connect } from 'react-redux';
+import { recipeRef } from '../firebase';
+import { setRecipe } from '../actions';
+import RecipePost from './RecipePost';
 
 class ListRecipe extends Component {
 
 componentDidMount() {
 recipeRef.on('value', snap => {
+  let recipes = [];
   snap.forEach(recipe => {
-    let recipObject = recipe.val();
-    console.log(recipObject);
-
-  });
+      const {email, title, ingredients, steps, name } = recipe.val();
+    //let recipObject = recipe.val();
+      recipes.push({email, title, ingredients, steps, name});
+    })
+    console.log('recipes', recipes);
+    this.props.setRecipe(recipes);
 });
 
 }
 
 render() {
-
+  console.log('this.props.recipes', this.props.recipes);
   return (
-    <div>Recipe List</div>
+    <div>{this.props.recipes.map((recipe, index) => {
+      return (
+        //<div key = { index }>{recipe.title}</div>
+        <RecipePost key = { index } recipe = { recipe } />
+      )
+    })
+
+  }</div>
   );
 }
   }
 
-export default ListRecipe;
+  function mapStateToProps(state) {
+    const { recipes } = state;
+    return {
+      recipes
+    }
+  }
+
+export default connect(mapStateToProps, { setRecipe })(ListRecipe);

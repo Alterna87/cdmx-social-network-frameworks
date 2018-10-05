@@ -14,5 +14,5 @@ export function setRecipe (recipes) {
     type: SET_RECIPE,
     recipes
   }
-  return recipes;
+  return action;
 }
