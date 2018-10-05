@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import firebaseApp  from 'firebase';
 import { withRouter } from 'react-router-dom';
-import  {connect}  from 'react-redux';
+import  { connect }  from 'react-redux';
 import M from "materialize-css/dist/js/materialize.min.js";
 import { recipeRef } from '../firebase';
 
@@ -15,8 +15,10 @@ class FormRecipe extends Component {
         steps: '',
         email:'',
         type: 'Receta',
-        like: 0
-      }
+        like: 0,
+        images: '',
+        url: ''
+        }
     }
     componentDidMount() {
        firebaseApp.auth().onAuthStateChanged(user => {
@@ -36,12 +38,32 @@ class FormRecipe extends Component {
            });
          });
       }
-
   addRecipe () {
-  console.log('this', this);
-  const {title, ingredients, steps, type, like } = this.state;
-  const {email} = this.props.user;
-  recipeRef.push({email, title, ingredients, steps, type, like })
+
+  const {title, ingredients, steps, type, like, images, url} = this.state;
+  const storageRef = firebaseApp.storage().ref(`images/${url.name}`);
+  const task = storageRef.put(url);
+  task.on('state_changed',
+snapshot => {
+  // progress function
+},
+error => {
+  console.log('error');
+},
+() => {
+  firebaseApp.storage().ref('images').child(url.name).getDownloadURL().then(images => {
+    this.setState({ images });
+    const {email, name} = this.props.user;
+    console.log(this.state);
+    recipeRef.push({email, title, ingredients, steps, type, like, images })
+  }
+  )
+}
+);
+    //console.log('this', this);
+
+
+
   }
 render() {
   return (
@@ -69,6 +91,18 @@ render() {
           <div className="input-field col s10 offset-s1">
           <textarea id="textarea2" className="materialize-textarea" onChange = { event => this.setState ({steps: event.target.value})} ></textarea>
           <label>Pasos</label>
+            </div>
+        <div className="input-field col s10 offset-s1">
+        <div className="file-field input-field">
+      <div className="btn">
+        <span>Foto</span>
+        <input type="file" onChange = { event => this.setState ({url: event.target.files[0]})}/>
+      </div>
+      <div className="file-path-wrapper">
+        <input className="file-path validate" type="text" />
+      </div>
+    </div>
+
           <a className = "waves-effect btn" onClick = { () => this.addRecipe()}><i className="material-icons left">publish</i>Publicar</a>
           </div>
 
