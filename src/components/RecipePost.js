@@ -9,10 +9,11 @@ class RecipePost extends Component {
       <div className="card">
         <div className="card-image">
           <img src={images}/>
-          <span className="card-title">{title}</span>
+
 
         </div>
         <div className="card-content">
+            <span className="card-title title-recipe">{title}</span>
           <p>Ingredientes: {ingredients} </p>
           <p>Pasos: {steps} </p>
         </div>
