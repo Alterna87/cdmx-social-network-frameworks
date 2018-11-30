@@ -81,7 +81,6 @@ render() {
     <div className="collapsible-body">
 
       <form className="row ">
-
               <div className="input-field col s10 offset-s1">
               <input type="text" id= "autocomplete-input" className="autocomplete validate" onChange = { event => this.setState ({title: event.target.value})}/>
                 <label>Titulo</label>
