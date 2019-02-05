@@ -66,3 +66,20 @@ height: 47px;
  .title-recipe {
    color: #f34b42;
  }
+
+ input[type=text]:not(.browser-default):focus:not([readonly]),
+ input[type=password]:not(.browser-default):focus:not([readonly]),
+ input[type=file]:not(.browser-default):focus:not([readonly]),
+ textarea.materialize-textarea:focus:not([readonly]) {
+   border-color: #ffa726;
+   box-shadow: none;
+
+ }
+ input[type=text]:not(.browser-default):focus:not([readonly])+label,
+ input[type=password]:not(.browser-default):focus:not([readonly])+label,
+ input[type=file]:not(.browser-default):focus:not([readonly])+label,
+ textarea.materialize-textarea:focus:not([readonly])+label {
+   color: #ffa726;
+
+
+ }

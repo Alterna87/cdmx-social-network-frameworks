@@ -27,7 +27,6 @@ class SingInUp extends Component {
 
   render() {
     return (
-
       <div className="row col s12 ">
       <div className='row col s12'>
       <img className= 'col s12 taco-logo' src = { logo }/>

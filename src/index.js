@@ -10,6 +10,7 @@ import reducers from './reducers'
 import { firebaseApp } from './firebase';
 import SignUp from './components/SingInUp';
 import SignIn from './components/SignIn';
+import RecipeDetails from './components/RecipeDetails';
 import { logUser } from './actions'
 
 const store = createStore(reducers);
@@ -31,6 +32,7 @@ ReactDOM.render(
             <Route exact path = '/' component = { App } />
             <Route  path = '/signup' component = { SignUp } />
             <Route  path = '/signin' component = { SignIn } />
+            <Route  path = '/recipe/:id' component = { RecipeDetails } />
       </div>
     </BrowserRouter></Provider>, document.getElementById('root'));
 registerServiceWorker();

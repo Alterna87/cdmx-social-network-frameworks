@@ -70,10 +70,10 @@ signOut() {
         { this.userInfoAvatar () }
         { this.userInfoName() }
         </div></li>
-      <li><a href="#!"><i className="fas fa-utensils"></i> Recetas</a></li>
-      <li><a href="#!"><i className="fas fa-map-marker-alt"></i> Lugares</a></li>
+      <li><a href="#!"><i className="fas fa-utensils"></i> Recetas Favoritas</a></li>
+      <li><a href="#!"><i className="fas fa-map-marker-alt"></i> Lugares Favoritos</a></li>
       <li><div className ="divider"></div></li>
-      <li><a className ="subheader">Perfil</a></li>
+      <li><a className ="">Perfil</a></li>
       <li><a className="waves-effect waves-light btn teal orange lighten-1" onClick = {() => this.signOut()}>Salir <i className = "fas fa-sign-out-alt"></i></a>
       </li>
     </ul>

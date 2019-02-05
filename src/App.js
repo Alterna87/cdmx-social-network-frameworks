@@ -1,8 +1,10 @@
 import React, { Component,  } from 'react';
-import './App.css';
+
 import 'materialize-css/dist/css/materialize.min.css';
+import './App.css';
 import firebaseApp  from 'firebase';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import taco from './assets/taco.png';
 
 // Components
@@ -41,4 +43,10 @@ constructor() {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps =(state) => {
+  return {
+    recipes: state.recipe.recipes
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(App));

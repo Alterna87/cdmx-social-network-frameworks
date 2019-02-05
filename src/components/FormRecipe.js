@@ -21,28 +21,20 @@ class FormRecipe extends Component {
         }
     }
     componentDidMount() {
-       firebaseApp.auth().onAuthStateChanged(user => {
-         user
-         ? this.setState({ user })
-         : this.setState ({ user: null });
-
+      document.addEventListener('DOMContentLoaded', function() {
+         var elems = document.querySelectorAll('.fixed-action-btn');
+         var instances = M.FloatingActionButton.init(elems, {
+           direction: 'left'
+         });
+         var elemsm = document.querySelectorAll('.collapsible');
+         var instancesm = M.Collapsible.init(elemsm, {
+           direction: 'left'
+         });
        });
-
+       M.updateTextFields();
     }
 
-      componentWillMount() {
-        document.addEventListener('DOMContentLoaded', function() {
-           var elems = document.querySelectorAll('.fixed-action-btn');
-           var instances = M.FloatingActionButton.init(elems, {
-             direction: 'left'
-           });
-           var elemsm = document.querySelectorAll('.collapsible');
-           var instancesm = M.Collapsible.init(elemsm, {
-             direction: 'left'
-           });
-         });
-         M.updateTextFields();
-      }
+
   addRecipe () {
 
   const {title, ingredients, steps, type, like, images, url} = this.state;
@@ -95,17 +87,17 @@ render() {
                 </div>
             <div className="input-field col s10 offset-s1">
             <div className="file-field input-field">
-          <div className="btn">
-            <span>Foto</span>
-            <input type="file" onChange = { event => this.setState ({url: event.target.files[0]})}/>
+          <div className="btn  teal orange lighten-1">
+          <input type="file" onChange = { event => this.setState ({url: event.target.files[0]})}/>
+          <i className="material-icons left">add_a_photo</i>
           </div>
           <div className="file-path-wrapper">
             <input className="file-path validate" type="text" />
           </div>
         </div>
 
-        <div className="">
-              <a className = "waves-effect btn" onClick = { () => this.addRecipe()}><i className="material-icons left">publish</i>Compartir</a>
+        <div className="col s10 offset-s2  ">
+      <a className = "waves-effect btn  teal orange lighten-1" onClick = { () => this.addRecipe()}>Publicar</a>
     </div>
             </div>
 
@@ -116,7 +108,6 @@ render() {
     <div className="collapsible-header"><i className="material-icons">place</i>Lugar</div>
     <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
   </li>
-
 </ul>
 
 
@@ -127,11 +118,7 @@ render() {
   }
 }
 
- function mapStateToProps  (state) {
-  const { user } = state;
-  console.log('state in form.js', state);
-  return { user }
-}
 
-export default withRouter(connect(mapStateToProps)(FormRecipe));
+
+export default withRouter(FormRecipe);
 //export default withRouter (FormRecipe);
